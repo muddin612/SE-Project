@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Seller Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #ff2600;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome, Red Hawk Lux Admin!</h1> <!--welcome mssage-->
+        <p>Manage seller information. Access, update, and remove sellers as needed.</p> <!--Description-->
+    </div>
+</body>
+    
+    <head>
+        <style>
+            body { 
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                color: #333;
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+            table, th, td {
+                border: 1px solid #ccc;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            h2 {
+                margin-bottom: 20px;
+            }
+            form {
+                display: block;  
+                margin-bottom: 20px;  
+            }
+            form input[type="text"],
+            form input[type="email"],
+            form input[type="password"],
+            form button {
+                padding: 8px;  
+                margin: 5px;  
+                width: 100%;  
+                box-sizing: border-box;  
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.4);
+           
+            }
+        </style>
+    </head>
+<body>
+    <head>
+            <style>
+                .popup {
+                    display: none;
+                    position: fixed;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    padding: 20px;
+                    background-color: #fff;
+                    border: 1px solid #ccc;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    z-index: 1000;
+                }
+            </style>
+    </head>
+<body>
+        <div class="container">
+        <title>Manage Sellers</title>
+        <form id="addForm">
+            <input type="text" name="firstName" placeholder="First Name" pattern="[A-Za-z]+" title="Please enter only letters" required>
+            <input type="text" name="lastName" placeholder="Last Name" pattern="[A-Za-z]+" title="Please enter only letters" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="businessName" placeholder="Business Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="phone" placeholder="Phone" pattern="[0-9]+" title="Please enter only numbers" required>
+            <button type="submit">Add Seller</button>
+        </form>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <select id="searchCategory">
+                <option value="id">ID</option>
+                <option value="firstName">First Name</option>
+                <option value="lastName">Last Name</option>
+                <option value="username">Username</option>
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+                <option value="businessName">Business Name</option>
+            </select>
+            <button type="button" onclick="searchSeller()">Search</button>
+            <button type="button" onclick="refreshTable()">Refresh</button>
+            <span id="searchMessage"></span>
+        </form>        
+            <table id="sellerTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Business Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </table>
+            </div>
+                <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Edit Seller</h3>
+                    <form id="editForm">
+                        <input type="hidden" id="editId" name="id">
+                        <input type="text" id="editFirstName" name="firstName" placeholder="First Name" pattern="[A-Za-z]+" title="Please enter only letters" required><br>
+                        <input type="text" id="editLastName" name="lastName" placeholder="Last Name" pattern="[A-Za-z]+" title="Please enter only letters" required><br>
+                        <input type="text" id="editUsername" name="username" placeholder="Username" required><br>
+                        <input type="password" id="editPassword" name="password" placeholder="Password" required><br>
+                        <input type="text" id="editBusinessName" name="businessName" placeholder="Business Name" required><br>
+                        <input type="email" id="editEmail" name="email" placeholder="Email" required><br> 
+                        <input type="text" id="editPhone" name="phone" placeholder="Phone" pattern="[0-9]+" title="Please enter only numbers" required><br>
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+            <div id="popup" class="popup">Duplicate Entry</div>
+            <script>
+                const table = document.getElementById('sellerTable');
+                const addForm = document.getElementById('addForm');
+                const editModal = document.getElementById('editModal');
+                const editForm = document.getElementById('editForm');
+                const editId = document.getElementById('editId');
+                const editFirstName = document.getElementById('editFirstName');
+                const editLastName = document.getElementById('editLastName');
+                const editUsername = document.getElementById('editUsername');
+                const editPassword = document.getElementById('editPassword');
+                const editBusinessName = document.getElementById('editBusinessName');
+                const editEmail = document.getElementById('editEmail');
+                const editPhone = document.getElementById('editPhone');
+                const popup = document.getElementById('popup');
+        
+                addForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const formData = new FormData(addForm);
+                    const firstName = formData.get('firstName');
+                    const lastName = formData.get('lastName');
+                    const username = formData.get('username');
+                    const password = formData.get('password');
+                    const businessName = formData.get('businessName');
+                    const email = formData.get('email');
+                    const phone = formData.get('phone');
+        
+                    if (isDuplicate(firstName, lastName, username, email, phone, businessName)) {
+                        popup.style.display = 'block';
+                        setTimeout(() => {
+                            popup.style.display = 'none';
+                        }, 2000);
+                        return;
+                    }
+                    const id = Math.floor(Math.random() * 1000) + 1;
+                    const newRow = `
+                        <tr>
+                            <td>${id}</td>
+                            <td>${firstName}</td>
+                            <td>${lastName}</td>
+                            <td>${username}</td>
+                            <td>${email}</td>
+                            <td>${phone}</td>
+                            <td>${businessName}</td>
+                            <td>
+                                <button onclick="openEditModal(${id})">Update</button>
+                                <button onclick="deleteSeller(${id})">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                    table.innerHTML += newRow;
+                    addForm.reset();
+                });
+        
+                    function deleteSeller(id) {
+                    const row = Array.from(table.rows).find(row => row.cells[0].textContent === id.toString());
+                    if (row) {
+                        row.parentNode.removeChild(row);
+                    }
+                }
+        
+    function searchSeller() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase().trim();
+    const searchCategory = document.getElementById('searchCategory').value;
+    let found = false;
+    for (let i = 1; i < table.rows.length; i++) {
+        const rowData = table.rows[i].cells[getCategoryIndex(searchCategory)].textContent.toLowerCase();
+
+        if (rowData.includes(searchInput)) {
+            table.rows[i].style.display = '';
+            found = true;
+        } else {
+            table.rows[i].style.display = 'none';
+        }
+    }
+
+    const searchMessage = document.getElementById('searchMessage');
+    if (!found && searchInput !== '') {
+        searchMessage.textContent = 'Does Not Exist';  
+    } else {
+        searchMessage.textContent = ''; 
+    }
+}
+
+function refreshTable() {
+    for (let i = 1; i < table.rows.length; i++) {
+        table.rows[i].style.display = '';
+    }
+}
+            function getCategoryIndex(category) {
+                switch (category) {
+                    case 'id':
+                        return 0;
+                    case 'firstName':
+                        return 1;
+                    case 'lastName':
+                        return 2;
+                    case 'username':
+                        return 3;
+                    case 'email':
+                        return 4;
+                    case 'phone':
+                        return 5;
+                    case 'businessName':
+                        return 6;
+                    default:
+                        return 0;
+                }
+            }
+
+            function openEditModal(id) {
+                const row = Array.from(table.rows).find(row => row.cells[0].textContent === id.toString());
+                if (row) {
+                    editId.value = id;
+                    editFirstName.value = row.cells[1].textContent;
+                    editLastName.value = row.cells[2].textContent;
+                    editUsername.value = row.cells[3].textContent;
+                    editEmail.value = row.cells[4].textContent;
+                    editPhone.value = row.cells[5].textContent;
+                    editBusinessName.value = row.cells[6].textContent;
+                    editModal.style.display = 'block';
+                }
+            }
+
+            editForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const id = editId.value;
+                const firstName = editFirstName.value;
+                const lastName = editLastName.value;
+                const username = editUsername.value;
+                const password = editPassword.value;
+                const businessName = editBusinessName.value;
+                const email = editEmail.value;
+                const phone = editPhone.value;
+                const row = Array.from(table.rows).find(row => row.cells[0].textContent === id.toString());
+                if (row) {
+                    row.cells[1].textContent = firstName;
+                    row.cells[2].textContent = lastName;
+                    row.cells[3].textContent = username;
+                    row.cells[4].textContent = email;
+                    row.cells[5].textContent = phone;
+                    row.cells[6].textContent = businessName;
+                    editModal.style.display = 'none';
+                }
+            });
+
+            editModal.querySelector('.close').addEventListener('click', function() {
+                editModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target == editModal) {
+                    editModal.style.display = 'none';
+                }
+            });
+
+            function isDuplicate(firstName, lastName, username, email, phone, businessName) {
+                firstName = firstName.toLowerCase();
+                lastName = lastName.toLowerCase();
+                username = username.toLowerCase();
+                email = email.toLowerCase();
+                businessName = businessName.toLowerCase();
+                for (let i = 1; i < table.rows.length; i++) {
+                    const rowFirstName = table.rows[i].cells[1].textContent.toLowerCase();
+                    const rowLastName = table.rows[i].cells[2].textContent.toLowerCase();
+                    const rowUsername = table.rows[i].cells[3].textContent.toLowerCase();
+                    const rowEmail = table.rows[i].cells[4].textContent.toLowerCase();
+                    const rowPhone = table.rows[i].cells[5].textContent;
+                    const rowBusinessName = table.rows[i].cells[6].textContent.toLowerCase();
+
+                    if (rowFirstName === firstName && rowLastName === lastName && rowUsername === username && rowEmail === email && rowPhone === phone && rowBusinessName === businessName) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        </script>
+    </body>
+</html>
