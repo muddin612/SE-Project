@@ -7,8 +7,10 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Login - SB Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="/CSS/admin css/admin_styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!--script src="/Javascript/check_admin_login.js" type="module"></script>
+        <--script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script-->
     </head>
     <body class="bg-primary">
         <div id="layoutAuthentication">
@@ -34,8 +36,11 @@
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                <script src="/Javascript/check_admin_login.js"></script>
                                                 <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="main_admin_page.html">Login</a>
+                                                <button type="button" onclick="getAdminData()">Login</button>
+                                                
+                                                <!--a class="btn btn-primary" href="admin_login_check.html">Login</-->
                                             </div>
                                         </form>
                                     </div>
@@ -64,6 +69,6 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="/Javascript/scripts.js"></script>
     </body>
 </html>
