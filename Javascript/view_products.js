@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <!-- Product actions-->
                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-cart" href="#">Add to cart</a></div>
                 </div>
             </div>
         `;
@@ -71,6 +71,16 @@ export function GetProductID() {
       productId = productCard.getAttribute('data-product-id');
       console.log('Product ID:', productId);
     });
+
+    const addToCart = productCard.querySelector('.btn-cart');
+    addToCart.addEventListener('click',function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      const productId = productCard.getAttribute('data-product-id');
+      console.log('Add to cart clicked for Product ID:', productId);
+
+    });
+
   });
   return productId;
 }
