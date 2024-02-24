@@ -35,7 +35,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="../Javascript/database.js" type="module"></script>
+    <script src="../Javascript/view_products.js" type="module"></script>
     <!--Database-->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!--Need to add to any html file that will use the data base-->
@@ -71,7 +71,7 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#!">Home</a>
             </li>
-          
+
             <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
 
             <li class="nav-item dropdown">
@@ -91,43 +91,48 @@
                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
               </ul>
             </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i class="fas fa-user mx-1"></i> Profile
-                
-                <!--User name will be added from database-->
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">My account</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    id="login_btn"
-                    href="/HTML/login and signup pages/login.html"
-                    >Login
-                  </a>
-                  <!--Dynamically will change to login or log out-->
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    id="signup_btn"
-                    href="/HTML/login and signup pages/signup.html"
-                    >Sign Up
-                  </a>
-                </li>
-              </ul>
-            </li>
           </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent d-flex">
+          <form class="d-flex">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-user mx-1"></i> Profile
+
+                  <!--User name will be added from database-->
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">My account</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      id="login_btn"
+                      href="/HTML/login and signup pages/login.html"
+                      >Login
+                    </a>
+                    <!--Dynamically will change to login or log out-->
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      id="signup_btn"
+                      href="/HTML/login and signup pages/signup.html"
+                      >Sign Up
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </form>
 
           <form class="d-flex">
             <button class="btn btn-outline-dark" type="submit">
@@ -151,44 +156,14 @@
       </div>
     </header>
 
-    <!-- Section-->
-    <section class="py-5">
+    <!-- Section for Products -->
+    <section id="products" class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
         <div
           class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
-        ></div>
-
-        <!--Product Cards Will be filled in using JS or python in the back end from the database-->
-        <div class="col mb-5">
-          <!--Card Starts Here-->
-          <div class="card h-100">
-            <!-- Product image-->
-            <img
-              class="card-img-top"
-              src="https://ovufxfqxnbhzzxjeopxw.supabase.co/storage/v1/object/sign/product_images/hawk-logo-color.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9kdWN0X2ltYWdlcy9oYXdrLWxvZ28tY29sb3IucG5nIiwiaWF0IjoxNzA4NDU5ODQwLCJleHAiOjE3Mzk5OTU4NDB9.Oe-uqjL8vQR97joEmLOCyAlSEg827T1J8FaygD9YJxg&t=2024-02-20T20%3A10%3A40.292Z"
-              alt="..."
-            />
-            <!-- Product details-->
-            <div class="card-body p-4">
-              <div class="text-center">
-                <!-- Product name-->
-                <h5 class="fw-bolder">Special Item</h5>
-                <!-- Product price-->
-                $18.00
-              </div>
-            </div>
-            <!-- Product actions-->
-
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-              </div>
-            </div>
-          </div>
+        >
+          <!-- Products will be dynamically added here -->
         </div>
-        <!--Card Ends here-->
-
-
       </div>
     </section>
   </body>
