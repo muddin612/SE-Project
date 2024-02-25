@@ -1,8 +1,4 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-const supabaseUrl = "https://ovufxfqxnbhzzxjeopxw.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92dWZ4ZnF4bmJoenp4amVvcHh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc0MDkwMzYsImV4cCI6MjAyMjk4NTAzNn0.Qnl8Bp8sTSrlOBv2ezwCRzSRKPl_sw1rHi-CG8-Mxyg";
-export const supabase = createClient(supabaseUrl, supabaseKey);
+import { supabase } from "/Javascript/database.js";
 
 function GetProducts() {
   return supabase
@@ -51,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       row.appendChild(col);
     });
     GetProductID();
+    CartBtn();
   }
 
   GetProducts()
@@ -83,6 +80,14 @@ export function GetProductID() {
 
   });
   return productId;
+}
+
+function CartBtn(){
+  const cart_btn = document.querySelector('.btn-cart');
+  cart_btn.addEventListener('click',function(event){
+    event.preventDefault();
+    window.location.href = '/HTML/product files/cart.html';
+  });
 }
 
 
