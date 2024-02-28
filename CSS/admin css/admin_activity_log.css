@@ -1,0 +1,54 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  header {
+    background-color: #ca1717;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  #activityLog {
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .logEntry {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+  
+  .logInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .logTime {
+    color: #888;
+  }
+  
+  .logType {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .logError {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+  
+  .logMessage {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  

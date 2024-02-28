@@ -6,10 +6,15 @@ body {
   }
   
   header {
-    background-color: #d32f2f;
+    background-color: #c81b1b;
     color: #fff;
     padding: 20px;
     text-align: center;
+  }
+  footer{
+    position: absolute;
+    bottom: 0;
+    width : 100%;
   }
   
   #statsSection {

@@ -1,0 +1,43 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+  }
+  
+  header {
+    background-color: #c81b1b;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  footer{
+    position: absolute;
+    bottom: 0;
+    width : 100%;
+  }
+  
+  #socialIcons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px;
+  }
+  
+  .socialIcon {
+    display: inline-block;
+    margin: 20px; /* Adjust margin for spacing */
+    text-decoration: none;
+    transition: transform 0.3s ease; /* Add a subtle transform effect */
+  }
+  
+  .socialIcon img {
+    width: 64px; /* Set a fixed width for the images */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .socialIcon:hover {
+    transform: scale(1.2); /* Add scale effect on hover */
+  }
+  

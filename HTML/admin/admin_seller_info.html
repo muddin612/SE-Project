@@ -1,6 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="/images/hawk-logo-color.png" type="image/x-icon" />
+  <!-- <link href="/CSS/admin css/admin_styles.css" rel="stylesheet" />
+  <link href="/CSS/admin css/admin_settings_css.css" rel="stylesheet" /> -->
+  <link href="/CSS/admin css/admin_styles.css" rel="stylesheet" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <title>Admin Settings</title>
+</head>
+<head>
+
    <title>Manage Seller Information</title>
    <style>
        body {
@@ -30,6 +45,9 @@
 <body>
    <div class="container">
        <h1>Welcome, Red Hawk Lux Admin!</h1> <!--welcome mssage-->
+       <header>
+        <img src="/images/hawk-logo-color.png" alt="Red Hawk Luz logo. The Red Hawk." height="150" width="150" />
+      </header>
        <p>Manage seller information. Access, update, and remove sellers as needed.</p> <!--Description-->
    </div>
 </body>
@@ -64,18 +82,35 @@
            h2 {
                margin-bottom: 20px;
            }
+           button{
+                background-color: #e41010;
+                margin-top : 20px;
+                color: #fdfdfd;
+                padding: 10px 10px;
+                border: none;
+                border-radius: 44px;
+                cursor: pointer;
+                font-size: 14px;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+           }
+           button:hover {
+                background-color: #07d061;
+                transition-delay: .05s;
+            }
+           
            form {
                display: block; 
-               margin-bottom: 20px; 
+               margin-bottom: 150px; 
            }
            form input[type="text"],
            form input[type="email"],
            form input[type="password"],
            form button {
                padding: 8px; 
-               margin: 5px; 
+               margin: 8px; 
                width: 100%; 
-               box-sizing: border-box; 
+               box-sizing: border-box;
+               border-radius: 44px; 
            }
            .modal {
                display: none;
@@ -345,4 +380,11 @@ function refreshTable() {
            }
        </script>
    </body>
+   <footer class="py-6 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">
+        Copyright &copy; Red Hawk Lux 2024
+      </p>
+    </div>
+  </footer>
 </html>
