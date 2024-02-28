@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link rel="icon" href="/images/hawk-logo-color.png" type="image/x-icon" />
+        <link href="/CSS/admin css/admin_styles.css" rel="stylesheet" />
+        <link href="/CSS/admin css/admin_stats_page.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <title>Admin Settings</title>
+      </head>
+      <body>
+
+        <header>
+          <h1>Business Statistics Dashboard</h1>
+          <img src="/images/hawk-logo-color.png" alt="Red Hawk Luz logo. The Red Hawk." height="150" width="150" />
+        </header>
+      
+        <section id="statsSection">
+          <div class="statCard" id="revenueCard">
+            <h2>Revenue</h2>
+            <p id="revenueAmount">$0</p>
+          </div>
+      
+          <div class="statCard" id="expensesCard">
+            <h2>Expenses</h2>
+            <p id="expensesAmount">$0</p>
+          </div>
+      
+          <div class="statCard" id="profitCard">
+            <h2>Profit</h2>
+            <p id="profitAmount">$0</p>
+          </div>
+      
+          <div class="statCard" id="customersCard">
+            <h2>Customers</h2>
+            <p id="customersCount">0</p>
+          </div>
+      
+          <div class="statCard" id="productsCard">
+            <h2>Products Sold</h2>
+            <p id="productsCount">0</p>
+          </div>
+      
+          <div class="statCard" id="avgTransactionCard">
+            <h2>Average Transaction</h2>
+            <p id="avgTransactionAmount">$0</p>
+          </div>
+        </section>
+      
+<script src="https://cdn.jsdelivr.net/npm/supabase-js@1.7.2"></script>
+<script src="/Javascript/admin_stats_page.js"></script>
+</body>
+</html>
