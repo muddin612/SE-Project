@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link rel="icon" href="/images/hawk-logo-color.png" type="image/x-icon" />
-    <link href="/CSS/admin css/admin_styles.css" rel="stylesheet" />
-    <link href="/CSS/admin css/admin_settings_css.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="/images/hawk-logo-color.png" type="image/x-icon" />
+  <link href="/CSS/admin css/admin_styles.css" rel="stylesheet" />
+  <link href="/CSS/admin css/admin_settings_css.css" rel="stylesheet" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <title>Admin Settings</title>
 </head>
+
 <body>
 
   <header>
     <h1>Admin Settings</h1>
-    <img
-            src="/images/hawk-logo-color.png"
-            alt="Red Hawk Luz logo. The Red Hawk."
-            height="50"
-            width="50"
-    />
+    <img src="/images/hawk-logo-color.png" alt="Red Hawk Luz logo. The Red Hawk." height="50" width="50" />
   </header>
 
   <section>
@@ -60,6 +56,8 @@
 
       <label for="password">Change Password:</label>
       <input type="password" id="password" name="password" placeholder="Your Password">
+      <input class="showpass" type="checkbox" onclick="showPass()">Show Password
+      <script src="/Javascript/admin_function.js"></script>
       <a href="#"><button type="submit">Change Password</button></a>
 
 
@@ -75,4 +73,5 @@
     </p>
   </div>
 </footer>
+
 </html>
