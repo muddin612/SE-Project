@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="/images/hawk-logo-color.png" type="image/x-icon" />
+  <link href="/CSS/admin css/admin_styles.css" rel="stylesheet" />
+  <link href="/CSS/admin css/admin_settings_css.css" rel="stylesheet" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <title>Admin Settings</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Admin Settings</h1>
+    <img src="/images/hawk-logo-color.png" alt="Red Hawk Luz logo. The Red Hawk." height="50" width="50" />
+  </header>
+
+  <section>
+    <h2>General Settings</h2>
+    <form>
+      <label for="siteName">Change Name:</label>
+      <input type="text" id="siteName" name="siteName" placeholder="Your Name">
+      <a href="#"><button type="submit">Change Name</button></a>
+
+      <label for="timezone">Timezone:</label>
+      <select id="timezone" name="timezone">
+        <option value="EST">EST</option>
+        <option value="GMT">GMT</option>
+        <option value="PST">PST</option>
+        <option value="CST">CST</option>
+        <option value="UTC">UTC</option>
+        <option value="MST">MST</option>
+        <!-- Add more timezone options as needed -->
+
+      </select>
+
+      <h2>Notification Settings</h2>
+
+      <label for="emailNotifications">Email Notifications:</label>
+      <input type="email" id="emailNotifications" name="Email" placeholder="Your Email">
+      <a href="#"><button type="submit">Change Email</button></a>
+
+
+      <label for="smsNotifications">SMS Notifications:</label>
+      <input type="tel" id="smsNotifications" name="smsNotifications" placeholder="Your Phone Number">
+      <a href="#"><button type="submit">Change Phone Number</button></a>
+
+
+      <h2>Security Settings</h2>
+
+      <label for="password">Change Password:</label>
+      <input type="password" id="password" name="password" placeholder="New Password">
+      <input class="showpass" type="checkbox" onclick="showPass()">Show Password
+      <script src="/Javascript/admin_function.js"></script>
+      <a href="#"><button type="submit">Change Password</button></a>
+
+
+    </form>
+    <a href="#"><button class='button1' type="submit">Save Changes</button></a>
+  </section>
+
+</body>
+<footer class="py-6 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">
+      Copyright &copy; Red Hawk Lux 2024
+    </p>
+  </div>
+</footer>
+
+</html>
