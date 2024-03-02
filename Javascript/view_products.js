@@ -73,7 +73,7 @@ export function GetProductID() {
     addToCart.addEventListener('click',function(event){
       event.preventDefault();
       event.stopPropagation();
-      const productId = productCard.getAttribute('data-product-id');
+      productId = productCard.getAttribute('data-product-id');
       console.log('Add to cart clicked for Product ID:', productId);
 
     });
