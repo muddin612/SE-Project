@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Profile</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="/CSS/admin css/admin_styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <style>
+        #edit {
+            text-align: center;
+        }
+
+        #update, #edit, input[type="button"] {
+            margin: 0 auto;  
+            text-align: center; 
+            display: block;  
+            width: fit-content;  
+        }
+
+        /* Apply border-radius to make the image circular */
+        #profile-image {
+            border-radius: 50%;
+            border: 2px solid black; /* Add a 5px thick solid black border */
+            width: 200px; /* Set the width to 200px */
+            height: 200px; /* Set the height to 200px */
+        }
+
+        /* Style the button to change the picture */
+        #change-picture-button {
+            display: block;
+            margin: 10px auto; /* Add some margin */
+        }
+
+        /* Style the view password button */
+        .view-password-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            color: blue;
+            text-decoration: underline;
+            margin-left: 5px;
+        }
+
+        /* Move the Red Hawk Logo to the right */
+        #left-hawk-logo {
+            position: absolute;
+            top: 150px;
+            left: 100px;
+            width: 300px;
+            height: 300px;
+        }
+
+
+        #Dashboard {
+            text-align: right;
+            position: absolute;
+            right: 0px; /* Adjust the right margin as needed */
+            top: 0;
+            line-height: 45px; /* Match the height of the navbar for vertical alignment */
+        }
+
+        /* Move the Red Hawk Logo to the right */
+        #right-hawk-logo {
+            position: absolute;
+            top: 150px;
+            right: 100px;
+            width: 300px;
+            height: 300px;
+        }
+        #save-button {
+            margin: 20px auto;
+            display: block;
+        }
+        /* Footer styling */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+        .centered {
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <span class="navbar-brand ps-3">Red Hawk Lux Admin</span>
+        <!-- Sidebar NEW-->
+        <div id="Dashboard" style="text-align:right;">
+            <a class="navbar-brand ps-3" href="main_admin_page.html" style="font-size: 15px; float: right; margin-right: 20px;">Dashboard</a>
+        </div>
+        
+    </nav>
+
+    <div style="text-align:center; margin-top: 90px;">
+        <!-- Display the profile image with circular outline and border -->
+        <img id="profile-image" src="https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg" alt="No Profile Picture"><br>
+        <!-- Input field for uploading a new profile image -->
+        <input type="file" name="my_file" id="my-file" style="display:none;" onchange="displayImage(this)">
+    </div>
+
+    <div id="edit" style="margin-top: 20px;">
+        <p>Username: <span id="username">Admin</span></p>
+        <p>Password: <span id="password">*********</span> <button class="view-password-button" onclick="togglePassword()">View</button></p>
+        <p>Full Name: <span id="name">John Doe</span></p>
+        <p>Email: <span id="email">admin@example.com</span></p>
+        <input type="button" value="Change Picture" id="change-picture-button" style="display:none;" onclick="document.getElementById('my-file').click();">
+    </div>
+
+    <!-- Edit Profile and Save Changes buttons -->
+    <div id="edit-buttons" style="text-align:center;">
+        <input type="button" value="Edit Profile" onclick="enableEdit()" id="edit-profile-button" class="centered"/><br>
+        <input type="button" value="Save Changes" onclick="saveChanges()" id="save-button" style="display:none;" class="centered"/>
+    </div>
+
+    <div id="message" style="display:none;">
+    </div>
+
+    <img id="left-hawk-logo" src="https://www.montclair.edu/university-communications/wp-content/uploads/sites/144/2020/10/hawk-logo-color.svg" alt="Montclair State University Hawk Logo" width="100" height="100">
+    <img id="right-hawk-logo" src="https://www.montclair.edu/university-communications/wp-content/uploads/sites/144/2020/10/hawk-logo-color.svg" alt="Montclair State University Hawk Logo" width="100" height="100">
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+          <p class="m-0 text-center text-white">
+            Copyright &copy; Red Hawk Lux 2024
+          </p>
+        </div>
+    </footer>
+
+    <script>
+        var editingEnabled = false;
+
+        // Function to display the selected image in a circular format
+        function displayImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    document.getElementById('profile-image').src = e.target.result;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    function enableEdit() {
+    if (!editingEnabled) {
+        var usernameSpan = document.getElementById('username');
+        var passwordSpan = document.getElementById('password');
+        var nameSpan = document.getElementById('name');
+        var emailSpan = document.getElementById('email');
+
+        // Hide the labels
+        document.querySelectorAll('label').forEach(label => label.style.display = 'none');
+
+        // Hide the profile information
+        usernameSpan.style.display = 'none';
+        passwordSpan.style.display = 'none';
+        nameSpan.style.display = 'none';
+        emailSpan.style.display = 'none';
+
+        // Show the input fields for editing
+        var editDiv = document.getElementById('edit');
+
+        var usernameInput = document.createElement('input');
+        usernameInput.type = 'text';
+        usernameInput.id = 'input-username';
+        usernameInput.value = usernameSpan.innerText;
+        usernameInput.placeholder = 'Username';
+        editDiv.appendChild(usernameInput);
+
+        var passwordInput = document.createElement('input');
+        passwordInput.type = 'password';
+        passwordInput.id = 'input-password';
+        passwordInput.placeholder = 'Password';
+        editDiv.appendChild(passwordInput);
+
+        var nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.id = 'input-name';
+        nameInput.value = nameSpan.innerText;
+        nameInput.placeholder = 'Full Name';
+        editDiv.appendChild(nameInput);
+
+        var emailInput = document.createElement('input');
+        emailInput.type = 'email';
+        emailInput.id = 'input-email';
+        emailInput.value = emailSpan.innerText;
+        emailInput.placeholder = 'Email';
+        editDiv.appendChild(emailInput);
+
+        // Show the change picture button
+        document.getElementById('change-picture-button').style.display = 'inline';
+
+        // Show the save button
+        document.getElementById('save-button').style.display = 'inline';
+
+        // Hide the edit button
+        document.getElementById('edit-profile-button').style.display = 'none';
+
+        editingEnabled = true;
+    }
+}
+
+
+
+
+        // Function to save changes made to the profile
+        function saveChanges() {
+            var usernameInput = document.getElementById('input-username');
+            var passwordInput = document.getElementById('input-password');
+            var nameInput = document.getElementById('input-name');
+            var emailInput = document.getElementById('input-email');
+
+            var usernameSpan = document.getElementById('username');
+            var passwordSpan = document.getElementById('password');
+            var nameSpan = document.getElementById('name');
+            var emailSpan = document.getElementById('email');
+
+            // Update span values with input values
+            usernameSpan.innerText = usernameInput.value;
+            passwordSpan.innerText = passwordInput.value;
+            nameSpan.innerText = nameInput.value;
+            emailSpan.innerText = emailInput.value;
+
+            // Remove the input fields
+            usernameInput.remove();
+            passwordInput.remove();
+            nameInput.remove();
+            emailInput.remove();
+
+            // Show the spans
+            usernameSpan.style.display = 'inline';
+            passwordSpan.style.display = 'inline';
+            nameSpan.style.display = 'inline';
+            emailSpan.style.display = 'inline';
+
+            // Hide the save button
+            document.getElementById('save-button').style.display = 'none';
+
+            // Hide the change picture button
+            document.getElementById('change-picture-button').style.display = 'none';
+
+            // Show the message
+            document.getElementById('message').style.display = 'block';
+
+            // Show the edit button
+            document.getElementById('edit-profile-button').style.display = 'inline';
+
+            editingEnabled = false;
+        }
+
+        // Function to toggle the visibility of the password
+        function togglePassword() {
+            var passwordSpan = document.getElementById('password');
+            var passwordInput = document.getElementById('input-password');
+
+            if (passwordSpan.style.display === 'none') {
+                passwordSpan.style.display = 'inline';
+                passwordInput.type = 'password';
+            } else {
+                passwordSpan.style.display = 'none';
+                passwordInput.type = 'text';
+            }
+        }
+    </script>
+</body>
+</html>
