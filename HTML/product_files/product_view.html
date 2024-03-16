@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Red Hawk Lux</title>
     <link rel="icon" href="/images/hawk-logo-color.png" type="image/x-icon" />
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -35,17 +34,16 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="../Javascript/view_products.js" type="module"></script>
+    <script src="/Javascript/product.js" type="module"></script>
     <!--Database-->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!--Need to add to any html file that will use the data base-->
   </head>
-
   <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="../../index.html">
           <img
             src="/images/hawk-logo-color.png"
             alt="Red Hawk Luz logo. The Red Hawk."
@@ -69,7 +67,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="../../index.html">Home</a>
             </li>
 
             <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
@@ -85,7 +83,7 @@
                 >Shop
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="index.html">All Products</a></li>
+                <li><a class="dropdown-item" href="../../index.html">All Products</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="/HTML/product_files/men.html">Men</a></li>
                 <li><a class="dropdown-item" href="/HTML/product_files/women.html">Women</a></li>
@@ -132,7 +130,7 @@
             </ul>
           </form>
           <form class="d-flex" action="/HTML/product_files/cart.html" method="get">
-            <button class="btn btn-outline-dark btn-cart" type="submit">
+            <button class="btn btn-outline-dark" type="submit">
               <i class="bi-cart-fill me-1"></i>
               Cart
               <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
@@ -143,25 +141,8 @@
       </div>
     </nav>
 
-    <!-- Header-->
-    <header class="bg-dark py-5">
-      <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-          <h1 class="display-4 fw-bolder">Shop in style</h1>
-          <p class="lead fw-normal text-white-50 mb-0">With Red Hawk Lux</p>
-        </div>
-      </div>
-    </header>
-
-    <!-- Section for Products -->
-    <section id="products" class="py-5">
-      <div class="container px-4 px-lg-5 mt-5">
-        <div
-          class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
-        >
-          <!-- Products will be dynamically added here -->
-        </div>
-      </div>
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 my-5"></div>
     </section>
   </body>
   <footer class="py-5 bg-dark">

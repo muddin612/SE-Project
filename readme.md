@@ -31,21 +31,6 @@ Red Hawk Lux is an e-commerce website specializing in luxury clothing. This proj
 5. Add desired items to your cart.
 6. Proceed to checkout and complete the purchase.
 
-## Changes Made
-
-### Main Pages
-
-- Utilized database integration to dynamically retrieve and display products on the main home page, ensuring up-to-date product listings and enhancing user experience.
-  
-### Cart Pages
-
-- Selected a template for the cart pages and integrated sample code, providing a foundation for designing and implementing the cart functionality as per website requirements. This includes features such as adding/removing items, updating quantities, and calculating totals.
-
-### Admin Page
-
-- Implemented changes to the admin page, enhancing functionality and usability for administrators. This may include features such as managing user accounts, viewing analytics, and updating product information.
-
-
 ## Contributors
 
 - Mohammed Uddin

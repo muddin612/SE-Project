@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Entry Form</title>
+    <script src="test_data_img.js" type="module"></script>
+</head>
+<body>
+    <h1>Add a New Product</h1>
+    <form action="" method="post" enctype="multipart/form-data" id="productForm">
+        <label for="product_name">Product Name:</label>
+        <input type="text" name="product_name" id="product_name" required><br><br>
+        
+        <label for="product_category">Product Category:</label>
+        <input type="text" name="product_category" id="product_category" required><br><br>
+        
+        <label for="product_description">Product Description:</label>
+        <textarea name="product_description" id="product_description" rows="5" cols="30" required></textarea><br><br>
+        
+        <label for="product_price">Product Price:</label>
+        <input type="number" name="product_price" id="product_price" step="0.01" required><br><br>
+        
+        <label for="product_seller_name">Seller Name:</label>
+        <input type="text" name="product_seller_name" id="product_seller_name" required><br><br>
+        
+        <label for="product_seller_id">Seller ID:</label>
+        <input type="text" name="product_seller_id" id="product_seller_id" required><br><br>
+        
+        <label for="product_inventory_amount">Inventory Amount:</label>
+        <input type="number" name="product_inventory_amount" id="product_inventory_amount" required><br><br>
+        
+        <label for="product_image">Product Image:</label>
+        <input type="file" name="product_image" id="product_image" accept="image/*" required><br><br>
+        
+        <button type="submit">Add Product</button>
+    </form>
+</body>
+</html>

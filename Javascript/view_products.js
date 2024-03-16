@@ -1,5 +1,7 @@
 import { supabase } from "/Javascript/database.js";
 
+var productId = null;
+
 function GetProducts() {
   return supabase
     .from("product_table")
@@ -14,10 +16,10 @@ function GetProducts() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  function DisplayProduct(product) {
+  function DisplayProduct(products) {
     const productsContainer = document.getElementById("products");
     let row;
-    product.forEach((product, index) => {
+    products.forEach((product, index) => {
       if (index % 4 === 0) {
         row = document.createElement("div");
         row.className = "row px-4";
@@ -28,26 +30,25 @@ document.addEventListener("DOMContentLoaded", function () {
       col.innerHTML = `
             <div class="card h-100" data-product-id="${product.product_id}">
                 <!-- Product image-->
-                <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="Product Image" />
+                <img class="card-img-top" src="${product.product_url}" alt="Product Image" />
                 <!-- Product details-->
                 <div class="card-body p-4">
                     <div class="text-center">
                         <!-- Product name-->
                         <h5 class="fw-bolder">${product.product_name}</h5>
-                        <!-- Product price-->
+                        <!-- Product price--> &#36
                         ${product.product_price}
                     </div>
                 </div>
                 <!-- Product actions-->
                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                    <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-cart" href="#">Add to cart</a></div>
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-cart" href="#" data-product-id="${product.product_id}">Add to cart</a></div>
                 </div>
             </div>
         `;
       row.appendChild(col);
     });
-    GetProductID();
-    CartBtn();
+    attachProductCardListeners();
   }
 
   GetProducts()
@@ -59,35 +60,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-export function GetProductID() {
-  const product_card = document.querySelectorAll('.card');
-  let productId;
-  product_card.forEach(productCard => {
-    productCard.addEventListener('click',function(event){
-      event.preventDefault();
-      productId = productCard.getAttribute('data-product-id');
-      console.log('Product ID:', productId);
-    });
+function handleProductClick(event) {
+  event.preventDefault();
+  productId = event.currentTarget.getAttribute('data-product-id');
+  localStorage.setItem('product_id', productId);
+  console.log('Product ID:', productId);
+  window.location.href = '/HTML/product_files/product_view.html';
+}
 
+function handleAddToCartClick(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  productId = event.currentTarget.getAttribute('data-product-id');
+  localStorage.setItem('product_id', productId);
+  console.log('Product ID:', productId);
+  window.location.href = '/HTML/product_files/cart.html';
+}
+
+function attachProductCardListeners() {
+  const product_cards = document.querySelectorAll('.card');
+  product_cards.forEach(productCard => {
+    productCard.addEventListener('click', handleProductClick);
     const addToCart = productCard.querySelector('.btn-cart');
-    addToCart.addEventListener('click',function(event){
-      event.preventDefault();
-      event.stopPropagation();
-      productId = productCard.getAttribute('data-product-id');
-      console.log('Add to cart clicked for Product ID:', productId);
-
-    });
-
-  });
-  return productId;
-}
-
-function CartBtn(){
-  const cart_btn = document.querySelector('.btn-cart');
-  cart_btn.addEventListener('click',function(event){
-    event.preventDefault();
-    window.location.href = '/HTML/product files/cart.html';
+    addToCart.addEventListener('click', handleAddToCartClick);
   });
 }
 
-
+export function getProductId(){
+  let product_id = localStorage.getItem('product_id')
+  return product_id;
+}
