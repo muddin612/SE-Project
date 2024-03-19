@@ -35,7 +35,8 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="../Javascript/view_products.js" type="module"></script>
+    <script src="/Javascript/navbar_men_women_helper.js" type="module"></script>
+    <script src="/Javascript/men.js" type="module"></script>
     <!--Database-->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!--Need to add to any html file that will use the data base-->
@@ -84,11 +85,11 @@
                 aria-expanded="false"
                 >Shop
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" id="shopDropdown" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="../../index.html">All Products</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="/HTML/product_files/men.html">Men</a></li>
-                <li><a class="dropdown-item" href="/HTML/product_files/women.html">Women</a></li>
+                <li><a class="dropdown-item" href="/HTML/product_files/men_women.html">Men</a></li>
+                <li><a class="dropdown-item" href="/HTML/product_files/men_women.html">Women</a></li>
               </ul>
             </li>
           </ul>
@@ -142,6 +143,31 @@
         </div>
       </div>
     </nav>
+
+
+      <!-- Header-->
+      <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+          <div class="text-center text-white">
+            <h1 id="catSelector" class="display-4 fw-bolder"></h1>
+          </div>
+        </div>
+      </header>
+
+
+       <!-- Section for Products -->
+    <section id="products" class="py-5">
+      <div class="container px-4 px-lg-5 mt-5">
+        <div
+          class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+        >
+          <!-- Products will be dynamically added here -->
+        </div>
+      </div>
+    </section>
+
+
+
 </body>
 <footer class="py-5 bg-dark">
   <div class="container">

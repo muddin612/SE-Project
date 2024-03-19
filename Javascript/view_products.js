@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="text-center">
                         <!-- Product name-->
                         <h5 class="fw-bolder">${product.product_name}</h5>
+                        <p><small>${product.product_category}</small></p>
                         <!-- Product price--> &#36
                         ${product.product_price}
                     </div>

@@ -29,6 +29,10 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="/Javascript/login_verify.js" type="module"></script>
+    <!--Database-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!--Need to add to any html file that will use the data base-->
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -57,8 +61,8 @@
                 <h3 class="mb-5">Sign In</h3>
     
                 <div class="form-outline mb-4">
-                  <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                  <label class="form-label" for="typeEmailX-2">Email</label>
+                  <input type="username" id="username" class="form-control form-control-lg" />
+                  <label class="form-label" for="username">Username</label>
                 </div>
     
                 <div class="form-outline mb-4">
@@ -66,7 +70,7 @@
                   <label class="form-label" for="typePasswordX-2">Password</label>
                 </div>
     
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit" id="login-btn">Login</button>
                 <hr class="my-4">
                 <div>
                   <p class="mb-0">Don't have an account? <a href="/HTML/login and signup pages/signup.html" class="text-black-50 fw-bold">Sign Up</a>

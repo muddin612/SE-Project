@@ -36,6 +36,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="" type="module"></script>
+    <script src="/Javascript/navbar_men_women_helper.js" type="module"></script>
     <!--Database-->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!--Need to add to any html file that will use the data base-->
@@ -84,11 +85,11 @@
                 aria-expanded="false"
                 >Shop
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" id="shopDropdown" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="../../index.html">All Products</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="/HTML/product_files/men.html">Men</a></li>
-                <li><a class="dropdown-item" href="/HTML/product_files/women.html">Women</a></li>
+                <li><a class="dropdown-item" href="/HTML/product_files/men_women.html">Men</a></li>
+                <li><a class="dropdown-item" href="/HTML/product_files/men_women.html">Women</a></li>
               </ul>
             </li>
           </ul>
