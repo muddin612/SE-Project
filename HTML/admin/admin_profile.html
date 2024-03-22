@@ -51,9 +51,9 @@
         #left-hawk-logo {
             position: absolute;
             top: 150px;
-            left: 100px;
-            width: 300px;
-            height: 300px;
+            left: 30px;
+            width: 250px;
+            height: 250px;
         }
 
 
@@ -69,9 +69,9 @@
         #right-hawk-logo {
             position: absolute;
             top: 150px;
-            right: 100px;
-            width: 300px;
-            height: 300px;
+            right: 30px;
+            width: 250px;
+            height: 250px;
         }
         #save-button {
             margin: 20px auto;
@@ -155,7 +155,7 @@
             }
         }
 
-    function enableEdit() {
+function enableEdit() {
     if (!editingEnabled) {
         var usernameSpan = document.getElementById('username');
         var passwordSpan = document.getElementById('password');
@@ -163,7 +163,7 @@
         var emailSpan = document.getElementById('email');
 
         // Hide the labels
-        document.querySelectorAll('label').forEach(label => label.style.display = 'none');
+        document.querySelectorAll('#edit p').forEach(p => p.style.display = 'none');
 
         // Hide the profile information
         usernameSpan.style.display = 'none';
@@ -214,55 +214,65 @@
     }
 }
 
+function saveChanges() {
+    var usernameInput = document.getElementById('input-username');
+    var passwordInput = document.getElementById('input-password');
+    var nameInput = document.getElementById('input-name');
+    var emailInput = document.getElementById('input-email');
 
+    var usernameSpan = document.getElementById('username');
+    var passwordSpan = document.getElementById('password');
+    var nameSpan = document.getElementById('name');
+    var emailSpan = document.getElementById('email');
 
+    // Validate full name input to allow only letters
+    var fullNamePattern = /^[A-Za-z\s]+$/;
+    if (!fullNamePattern.test(nameInput.value)) {
+        alert('Full name can only contain letters and spaces.');
+        return;
+    }
 
-        // Function to save changes made to the profile
-        function saveChanges() {
-            var usernameInput = document.getElementById('input-username');
-            var passwordInput = document.getElementById('input-password');
-            var nameInput = document.getElementById('input-name');
-            var emailInput = document.getElementById('input-email');
+    // Validate email input format
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailInput.value)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
 
-            var usernameSpan = document.getElementById('username');
-            var passwordSpan = document.getElementById('password');
-            var nameSpan = document.getElementById('name');
-            var emailSpan = document.getElementById('email');
+    // Update span values with input values
+    usernameSpan.textContent = usernameInput.value !== '' ? usernameInput.value : 'Admin';
+    passwordSpan.textContent = passwordInput.value !== '' ? passwordInput.value : '*********';
+    nameSpan.textContent = nameInput.value !== '' ? nameInput.value : 'John Doe';
+    emailSpan.textContent = emailInput.value !== '' ? emailInput.value : 'admin@example.com';
 
-            // Update span values with input values
-            usernameSpan.innerText = usernameInput.value;
-            passwordSpan.innerText = passwordInput.value;
-            nameSpan.innerText = nameInput.value;
-            emailSpan.innerText = emailInput.value;
+    // Show the original profile information
+    usernameSpan.style.display = 'inline';
+    passwordSpan.style.display = 'inline';
+    nameSpan.style.display = 'inline';
+    emailSpan.style.display = 'inline';
 
-            // Remove the input fields
-            usernameInput.remove();
-            passwordInput.remove();
-            nameInput.remove();
-            emailInput.remove();
+    // Remove the input fields only if they were created
+    if (document.getElementById('input-username')) {
+        usernameInput.remove();
+        passwordInput.remove();
+        nameInput.remove();
+        emailInput.remove();
+    }
+    // Show the labels
+    document.querySelectorAll('#edit p').forEach(p => p.style.display = 'block');
 
-            // Show the spans
-            usernameSpan.style.display = 'inline';
-            passwordSpan.style.display = 'inline';
-            nameSpan.style.display = 'inline';
-            emailSpan.style.display = 'inline';
+    // Hide the save button
+    document.getElementById('save-button').style.display = 'none';
 
-            // Hide the save button
-            document.getElementById('save-button').style.display = 'none';
+    // Hide the change picture button
+    document.getElementById('change-picture-button').style.display = 'none';
 
-            // Hide the change picture button
-            document.getElementById('change-picture-button').style.display = 'none';
+    // Show the edit button
+    document.getElementById('edit-profile-button').style.display = 'inline';
 
-            // Show the message
-            document.getElementById('message').style.display = 'block';
-
-            // Show the edit button
-            document.getElementById('edit-profile-button').style.display = 'inline';
-
-            editingEnabled = false;
-        }
-
-        // Function to toggle the visibility of the password
+    editingEnabled = false;
+}
+        // Toggles the visibility of the password
         function togglePassword() {
             var passwordSpan = document.getElementById('password');
             var passwordInput = document.getElementById('input-password');
